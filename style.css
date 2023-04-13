@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main: rgb(217, 151, 97);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(88, 54, 0);
+}
+
+.main{
+    display: grid;
+    position: relative;
+    margin-top: 125px;
+    grid-template-columns: repeat(3, 105px);
+    grid-template-rows: repeat(3, 105px);
+    grid-gap: 100px;
+    justify-content: center;
+}
+
+.main .circle{
+    display: flex;
+    width: 105px;
+    height: 105px;
+    background-color: var(--main);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.token{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.5s;
+    z-index: 2;
+}
+
+
+/******************************************************************/
+/**************************Les Chemins*****************************/
+/******************************************************************/
+.stick1{
+    width: 425px;
+    height: 15px;
+    top: 45px;
+    left: 45px;
+    background: var(--main);
+}
+
+.stick2{
+    width: 425px;
+    height: 15px;
+    top: 455px;
+    left: 45px;
+    background-color: var(--main);
+}
+
+.stick3{
+    width: 15px;
+    height: 425px;
+    top: 45px;
+    left: 45px;
+    background-color: var(--main);
+}
+
+.stick4{
+    width: 15px;
+    height: 425px;
+    top: 45px;
+    left: 455px;
+    background-color: var(--main);
+}
+
+.stick5{
+    width: 15px;
+    height: 425px;
+    top: 45px;
+    left: 250px;
+    background-color: var(--main);
+}
+
+.stick6{
+    width: 425px;
+    height: 15px;
+    top: 250px;
+    left: 45px;
+    background-color: var(--main);
+}
+
+.stick7{
+    width: 15px;
+    height: 580px;
+    top: -32px;
+    left: 250px;
+    background-color: var(--main);
+    transform: rotate(45deg);
+}
+
+.stick8{
+    width: 15px;
+    height: 580px;
+    top: -32px;
+    left: 250px;
+    background-color: var(--main);
+    transform: rotate(135deg);
+}
