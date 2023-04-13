@@ -1,5 +1,5 @@
 //IMPORTATION
-import {possibleMove, reset} from './contents.js'
+import {changeColor, possibleMove, reset} from './contents.js'
 
 //CREATION PLATEAU
 const main = document.querySelector('.main')
@@ -8,7 +8,6 @@ for (let i=0; i<9; i++){
     const div = document.createElement('div')
     main.append(div)
     div.setAttribute('class', 'circle')
-    // div.classList.add(i+1)
     div.setAttribute('id', i+1)
 }
 const circles = document.querySelectorAll('.circle')
