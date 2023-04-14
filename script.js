@@ -1,5 +1,5 @@
 //IMPORTATION
-import {changeColor, possibleMove, reset} from './contents.js'
+import {possibleMove, reset, alignToken} from './contents.js'
 
 //CREATION PLATEAU
 const main = document.querySelector('.main')
@@ -19,7 +19,7 @@ for (let i=0; i<8; i++){
     div.style.position = 'absolute'
 }
 
-//CREATION DES TOKENS
+//CREATION DES TOKENS (PIONS)
 function createTokens(){
     const tokens = []
     let put = 0
@@ -36,6 +36,8 @@ function createTokens(){
                         div.style.backgroundColor = 'red'
                     else
                         div.style.backgroundColor = 'green'
+
+                    alignToken(div)
                     tokens.push(document.querySelector('.token'))
                 }
     
@@ -85,6 +87,7 @@ async function moveTokens(){
                         selectedToken.style.width = '75px'
                         selectedToken.style.height = '75px'
                         reset(circles)
+                        alignToken(selectedToken)
                         selectedToken = null
                     }, 0)
                 }
