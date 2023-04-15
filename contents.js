@@ -24,9 +24,6 @@ export function possibleMove(elem){
         7 : ['4','5','8'],
         8 : ['7','5','9'],
         9 : ['5','6','8']
-
-
-        
     }
     
     for (let i=0; i<relation[r].length; i++){
