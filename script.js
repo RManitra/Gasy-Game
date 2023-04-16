@@ -23,6 +23,7 @@ for (let i=0; i<8; i++){
 function createTokens(){
     const tokens = []
     let put = 0
+    let turn = true
 
     return new Promise((resolve, reject) => {
         circles.forEach(c => {
@@ -32,17 +33,21 @@ function createTokens(){
                     c.append(div)
                     div.setAttribute('class', 'token')
                     put++
-                    if (put % 2 != 0)
+                    if (turn){
                         div.style.backgroundColor = 'red'
-                    else
+                        turn = false
+                    }
+                    else {
                         div.style.backgroundColor = 'green'
+                        turn = true
+                    }
 
                     alignToken(div)
                     tokens.push(document.querySelector('.token'))
                 }
     
                 if (tokens.length == 6){
-                    resolve()
+                    resolve(turn)
                 }
             })
         })
@@ -51,7 +56,10 @@ function createTokens(){
 
 //MOUVEMENT DES TOKENS
 async function moveTokens(){
+    let turn = null
     await createTokens()
+        .then((val) => turn = val)
+    console.log(turn)
     let selectedToken = null
     const tokens = document.querySelectorAll('.token')
 
@@ -60,18 +68,28 @@ async function moveTokens(){
 
         t.addEventListener('click', () => {
             if (selectedToken == null){
-                selectedToken = t
-                setTimeout(() => {
-                    t.style.width = '85px'
-                    t.style.height = '85px'
-                }, 0)
-                possibleMove(t)
+                if (turn && t.style.backgroundColor == 'red'){
+                    selectedToken = t
+                    setTimeout(() => {
+                        selectedToken.style.width = '85px'
+                        selectedToken.style.height = '85px'
+                        possibleMove(selectedToken)
+                    }, 0)
+                }
+                else if (!turn && t.style.backgroundColor == 'green'){
+                    selectedToken = t
+                    setTimeout(() => {
+                        selectedToken.style.width = '85px'
+                        selectedToken.style.height = '85px'
+                        possibleMove(selectedToken)
+                    }, 0)
+                }   
             }
 
             else if (selectedToken == t && t.style.width == '85px'){
+                selectedToken.style.width = '75px'
+                selectedToken.style.height = '75px'
                 selectedToken = null
-                t.style.width = '75px'
-                t.style.height = '75px'
                 reset(circles)
             }
         })
@@ -89,6 +107,7 @@ async function moveTokens(){
                         reset(circles)
                         alignToken(selectedToken)
                         selectedToken = null
+                        turn = (turn) ? false : true 
                     }, 0)
                 }
             })
