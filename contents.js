@@ -7,10 +7,6 @@ function childOf(parent){                                           //Obtenir l'
     return document.getElementById(parent).children[0]
 }
 
-function test(parent){
-    return document.get
-}
-
 export function possibleMove(elem){
     let r = parseInt(pN(elem))
 
