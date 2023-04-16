@@ -12,7 +12,7 @@ body{
     display: flex;
     justify-content: center;
     background-color: rgb(88, 54, 0);
-}
+}   
 
 .main{
     display: grid;
