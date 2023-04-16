@@ -59,7 +59,6 @@ async function moveTokens(){
     let turn = null
     await createTokens()
         .then((val) => turn = val)
-    console.log(turn)
     let selectedToken = null
     const tokens = document.querySelectorAll('.token')
 
